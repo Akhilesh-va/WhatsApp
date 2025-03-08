@@ -1,4 +1,5 @@
 package com.example.whatsappjetpackcompose.common
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -7,6 +8,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -31,27 +35,40 @@ import com.example.whatsappjetpackcompose.R
 import kotlin.math.sin
 
 @Composable
-fun TopBar(text: String) {
+fun TopBar(text: String , options : List<String>) {
 
+    var showMenu by remember { mutableStateOf(false) }
     var isSearching by remember {
         mutableStateOf(false)
     }
     var search by remember {
+
         mutableStateOf("")
     }
+    BackHandler(enabled = isSearching) {
+        isSearching = false
+    }
     if (isSearching){
-        TextField(value = search , onValueChange = {
-            search = it
 
-        }, placeholder = {
-            Text(text="Search Here...")
-        } , colors = TextFieldDefaults.colors(
-            focusedContainerColor = Color.Transparent,
-            unfocusedContainerColor = Color.Transparent
-            , focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent,
+       Row(modifier = Modifier.fillMaxWidth()) {
+           TextField(value = search , onValueChange = {
+           search = it
 
-            ), modifier = Modifier.padding(start = 12.dp).fillMaxWidth(), singleLine = true)
+       }, placeholder = {
+           Text(text="Search Here...")
+       } , colors = TextFieldDefaults.colors(
+           focusedContainerColor = Color.Transparent,
+           unfocusedContainerColor = Color.Transparent
+           , focusedIndicatorColor = Color.Transparent,
+           unfocusedIndicatorColor = Color.Transparent,
+
+           ), modifier = Modifier.padding(start = 12.dp).fillMaxWidth()
+               .weight(1f), singleLine = true)
+
+       IconButton(onClick = {isSearching=false} , modifier = Modifier.padding(end=8.dp)) {
+           Icon(imageVector = Icons.Default.Close , "")
+       }}
+
 
     }else{
         Box(modifier = Modifier.fillMaxWidth()) {
@@ -88,6 +105,7 @@ fun TopBar(text: String) {
                 }
                 Spacer(modifier = Modifier.width(10.dp))
                 IconButton(onClick = {
+                   showMenu=!showMenu
 
                 }) {
                     Icon(
@@ -97,6 +115,11 @@ fun TopBar(text: String) {
                     )
                 }
                 Spacer(modifier = Modifier.width(10.dp))
+
+
+            }
+            if(showMenu){
+                MoreComposable(showMenu , options, onDismissRequest = {showMenu=false})
             }
 
         }
@@ -104,11 +127,5 @@ fun TopBar(text: String) {
     }
 
 
-}
-
-@Preview(showSystemUi = true)
-@Composable
-private fun Default() {
-    TopBar("Updates")
 
 }

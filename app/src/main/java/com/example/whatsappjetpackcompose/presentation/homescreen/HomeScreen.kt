@@ -55,7 +55,9 @@ fun HomeScreen() {
         } , bottomBar = {BottomNavigation()}
     ) {
         Column(modifier = Modifier.padding(it)) {
-            TopBar("WhatsApp")
+            TopBar("WhatsApp" ,options=listOf(
+                "New group" , "New broadcast" , "Linked devices" , "Starred messages" , "Payments" , "Settings"
+            ))
 
 
             HorizontalDivider(color = Color.Gray, modifier = Modifier.alpha(0.5f))

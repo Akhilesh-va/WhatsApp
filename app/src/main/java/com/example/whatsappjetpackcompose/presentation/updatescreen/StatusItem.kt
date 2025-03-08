@@ -1,11 +1,12 @@
 package com.example.whatsappjetpackcompose.presentation.updatescreen
 
-import android.R
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -21,13 +22,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.whatsappjetpackcompose.R
 import com.example.whatsappjetpackcompose.model.statusmodel.StatusModel
 
 @Composable
 fun StatusItem(statusModel: StatusModel) {
-    Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
+    Row(modifier = Modifier.fillMaxWidth().padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
 
         Image(
             painter = painterResource(statusModel.image),
@@ -45,7 +48,9 @@ fun StatusItem(statusModel: StatusModel) {
                 Text(
                     text = statusModel.name,
                     style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 22.sp),
-                    modifier = Modifier.align(Alignment.Top).weight(1f), color = Color.Black
+                    modifier = Modifier
+                        .align(Alignment.Top)
+                        .weight(1f), color = Color.Black
                 )
 
 
@@ -59,5 +64,14 @@ fun StatusItem(statusModel: StatusModel) {
 
         }
     }
+
+}
+
+@Preview(showSystemUi = true)
+@Composable
+ fun Default(
+
+) {
+     StatusItem(statusModel = StatusModel(R.drawable.man,"Akhilesh" , "Tap to add status update"))
 
 }

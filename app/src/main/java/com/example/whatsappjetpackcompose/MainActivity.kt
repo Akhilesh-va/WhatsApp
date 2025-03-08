@@ -11,6 +11,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.whatsappjetpackcompose.model.statusmodel.StatusModel
+import com.example.whatsappjetpackcompose.presentation.homescreen.HomeScreen
+import com.example.whatsappjetpackcompose.presentation.updatescreen.UpdateScreen
 import com.example.whatsappjetpackcompose.ui.theme.WhatsAppJetpackComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,6 +22,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             WhatsAppJetpackComposeTheme {
+            UpdateScreen()
 
             }
         }
