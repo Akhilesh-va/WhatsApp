@@ -35,7 +35,7 @@ import com.example.whatsappjetpackcompose.R
 import kotlin.math.sin
 
 @Composable
-fun TopBar(text: String , options : List<String>) {
+fun TopBar(text: String , options : List<String> , color : Int) {
 
     var showMenu by remember { mutableStateOf(false) }
     var isSearching by remember {
@@ -74,7 +74,7 @@ fun TopBar(text: String , options : List<String>) {
         Box(modifier = Modifier.fillMaxWidth()) {
             Text(
                 text = text, fontSize = 28.sp,
-                color = colorResource(R.color.whatsapp_medium_green),
+                color = colorResource(color),
                 modifier = Modifier
                     .align(Alignment.CenterStart)
                     .padding(start = 16.dp),

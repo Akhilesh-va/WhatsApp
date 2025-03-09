@@ -26,12 +26,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 import com.example.whatsappjetpackcompose.R
+import com.example.whatsappjetpackcompose.presentation.navigation.Routes
 
-@Preview(showSystemUi = true)
+
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(navController: NavController) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -62,13 +64,15 @@ fun WelcomeScreen() {
         }
         Spacer(modifier = Modifier.height(24.dp))
         Button(
-            onClick = {}, modifier = Modifier.size(280.dp, 43.dp), shape = RoundedCornerShape(8.dp),
+            onClick = {
+                navController.navigate(Routes.UserRegistrationScreen)
+            }, modifier = Modifier.size(280.dp, 43.dp), shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = colorResource(R.color.whatsapp_dark_green),
 
             )
         ) {
-            Text(text = "Agree and Continue")
+            Text(text = "Agree and Continue" , color = colorResource(R.color.primary_text))
 
         }
 

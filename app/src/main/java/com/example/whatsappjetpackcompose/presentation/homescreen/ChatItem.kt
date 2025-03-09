@@ -45,8 +45,8 @@ fun ChatItem(
             Column {
                 Row {
                     Text(text = chatModel.name,
-                        style = TextStyle(fontWeight = FontWeight.Bold  , fontSize = 22.sp),
-                        modifier = Modifier.align(Alignment.Top).weight(1f) , color = Color.Black)
+                        style = TextStyle(fontWeight = FontWeight.Bold  , fontSize = 18.sp),
+                        modifier = Modifier.align(Alignment.Top).weight(1f))
 
                     Text(text = chatModel.time,
                         style = TextStyle(fontWeight = FontWeight.Medium  , fontSize = 14.sp))

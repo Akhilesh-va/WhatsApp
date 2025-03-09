@@ -15,4 +15,7 @@
     <color name="whatsapp_light_green">#25d366</color>
     <color name="whatsapp_background_light">#dcf8c6</color>
     <color name="whatsapp_background_grey">#ece5dd</color>
+    <color name="primary_text">#FFFFFF</color>
+    <color name="secondary_text">#808080</color>
+
 </resources>

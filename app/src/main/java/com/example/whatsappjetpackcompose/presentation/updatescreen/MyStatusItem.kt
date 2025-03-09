@@ -73,10 +73,10 @@ fun MyStatusItem() {
             Row {
                 Text(
                     text = "My Status",
-                    style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 22.sp),
+                    style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 18.sp),
                     modifier = Modifier
                         .align(Alignment.Top)
-                        .weight(1f), color = Color.Black
+                        .weight(1f)
                 )
 
 

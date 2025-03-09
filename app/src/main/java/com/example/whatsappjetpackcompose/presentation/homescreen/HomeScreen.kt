@@ -16,14 +16,15 @@ import androidx.compose.ui.graphics.Color
 
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.whatsappjetpackcompose.R
+import com.example.whatsappjetpackcompose.common.FloatingComposable
 import com.example.whatsappjetpackcompose.model.chatmodel.ChatModel
 import com.example.whatsappjetpackcompose.common.TopBar
 import com.example.whatsappjetpackcompose.presentation.bottomnavigation.BottomNavigation
 
-@Preview(showSystemUi = true)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     val chatData =
         listOf(ChatModel(R.drawable.boy , "Happy Singh" ,"Paise chahiye bhai" , "11:13"),
                 ChatModel(R.drawable.carryminati,"Rahul Sharma", "Bhai, password '123456' nahi chal raha!", "10:01"),
@@ -52,12 +53,12 @@ fun HomeScreen() {
     Scaffold(
         floatingActionButton = {
             FloatingComposable(R.drawable.chat_icon)
-        } , bottomBar = {BottomNavigation()}
+        } , bottomBar = {BottomNavigation(navController)}
     ) {
         Column(modifier = Modifier.padding(it)) {
             TopBar("WhatsApp" ,options=listOf(
                 "New group" , "New broadcast" , "Linked devices" , "Starred messages" , "Payments" , "Settings"
-            ))
+            ),R.color.whatsapp_medium_green)
 
 
             HorizontalDivider(color = Color.Gray, modifier = Modifier.alpha(0.5f))

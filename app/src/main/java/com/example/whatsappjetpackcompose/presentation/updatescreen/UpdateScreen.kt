@@ -1,9 +1,7 @@
 package com.example.whatsappjetpackcompose.presentation.updatescreen
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,19 +17,22 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.whatsappjetpackcompose.R
 import com.example.whatsappjetpackcompose.common.TopBar
 import com.example.whatsappjetpackcompose.model.channelmodel.ChannelModel
 import com.example.whatsappjetpackcompose.model.statusmodel.StatusModel
 import com.example.whatsappjetpackcompose.presentation.bottomnavigation.BottomNavigation
-import com.example.whatsappjetpackcompose.presentation.homescreen.FloatingComposable
+import com.example.whatsappjetpackcompose.common.FloatingComposable
 @Composable
-fun UpdateScreen() {
+
+fun UpdateScreen(navController: NavController) {
 
     val statusData = listOf(
         StatusModel(R.drawable.ajay_devgn, "Juban Kesari", "Just now"),
@@ -59,7 +60,7 @@ fun UpdateScreen() {
         floatingActionButton = {
             FloatingComposable(R.drawable.baseline_photo_camera_24)
         },
-        bottomBar = { BottomNavigation() }
+        bottomBar = { BottomNavigation(navController    ) }
     ) { paddingValues ->
         // Replacing Column with LazyColumn for scrollable content
         LazyColumn(
@@ -72,6 +73,7 @@ fun UpdateScreen() {
                 TopBar(
                     text = "Updates",
                     options = listOf("Status Privacy", "Create Channel", "Settings")
+                    ,R.color.whatsapp_medium_green
                 )
                 HorizontalDivider(color = Color.Gray, modifier = Modifier.alpha(0.5f))
             }
@@ -122,6 +124,15 @@ fun UpdateScreen() {
             }
         }
     }
+}
+
+@Preview
+@Composable
+ fun DEfault5(
+
+ ) {
+     UpdateScreen(navController = NavController(LocalContext.current))
+    
 }
 
 

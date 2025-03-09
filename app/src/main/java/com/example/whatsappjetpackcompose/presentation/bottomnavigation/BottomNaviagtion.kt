@@ -21,12 +21,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.whatsappjetpackcompose.R
+import com.example.whatsappjetpackcompose.presentation.navigation.Routes
 
-@Preview(showSystemUi = true)
+
 @Composable
- fun BottomNavigation() {
-    BottomAppBar(tonalElevation = 12.dp , containerColor = Color.White
+ fun BottomNavigation(navController: NavController) {
+    BottomAppBar(tonalElevation = 12.dp , containerColor = Color.Black
         ) {
 
         Row(modifier = Modifier
@@ -35,7 +37,7 @@ import com.example.whatsappjetpackcompose.R
             horizontalArrangement = Arrangement.SpaceBetween) {
             Column(modifier = Modifier.padding(top=10.dp),
                 horizontalAlignment = Alignment.CenterHorizontally) {
-                IconButton(onClick = { }) {
+                IconButton(onClick = { navController.navigate(Routes.HomeScreen)}) {
                     Icon(painter = painterResource(R.drawable.outline_chat_24),"",
                         modifier = Modifier.size(30.dp)
                     )
@@ -46,7 +48,7 @@ import com.example.whatsappjetpackcompose.R
 
             }
             Column(modifier = Modifier.padding(top=10.dp) ,horizontalAlignment = Alignment.CenterHorizontally) {
-                IconButton(onClick = { }) {
+                IconButton(onClick = {navController.navigate(Routes.UpdateScreen) }) {
                     Icon(painter = painterResource(R.drawable.update_icon),"",
                         modifier = Modifier.size(30.dp)
                     )
@@ -57,7 +59,7 @@ import com.example.whatsappjetpackcompose.R
 
             }
             Column(modifier = Modifier.padding(top=10.dp),horizontalAlignment = Alignment.CenterHorizontally) {
-                IconButton(onClick = { }) {
+                IconButton(onClick = {navController.navigate(Routes.CommunitiesScreen) }) {
                     Icon(painter = painterResource(R.drawable.communities_icon),"",
                         modifier = Modifier
                             .size(30.dp)
@@ -70,7 +72,7 @@ import com.example.whatsappjetpackcompose.R
 
             }
             Column(modifier = Modifier.padding(top=10.dp),horizontalAlignment = Alignment.CenterHorizontally) {
-                IconButton(onClick = { }) {
+                IconButton(onClick = { navController.navigate(Routes.CallScreen)}) {
                     Icon(painter = painterResource(R.drawable.add_call),"",
                         modifier = Modifier.size(30.dp)
                     )

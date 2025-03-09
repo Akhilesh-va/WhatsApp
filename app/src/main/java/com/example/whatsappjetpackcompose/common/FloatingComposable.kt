@@ -1,4 +1,4 @@
-package com.example.whatsappjetpackcompose.presentation.homescreen
+package com.example.whatsappjetpackcompose.common
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.FloatingActionButton
